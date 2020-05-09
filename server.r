@@ -35,16 +35,22 @@ shinyServer(function(input, output){
     })
     
     output$plot_knn_changing_folds <- renderPlot({
-        plot(knn_acc_folds,type = "o",col = "red",xlab = "folds",ylab = "accuracy")
+        plot(knn_acc_folds,main = "KNN with changing fold num",type = "o",col = "red",xlab = "folds",ylab = "accuracy")
     })
     
     output$plot_knn_changing_sims <- renderPlot({
-        plot(knn_acc_sims,type = "o",col = "blue",xlab = "simulation number",ylab = "accuracy")
+        plot(knn_acc_sims,main = "KNN with changing simulation number",type = "o",col = "blue",xlab = "simulation number",ylab = "accuracy")
     })
     output$plot_knn_changing_neighbours <- renderPlot({
-        plot(knn_acc_neighbours,type = "o",col = "green",xlab = "nearest neighbours number",ylab = "accuracy")
+        plot(knn_acc_neighbours,main = "KNN with changing Nearest Neighbours",type = "o",col = "green",xlab = "nearest neighbours number",ylab = "accuracy")
+    })
+    output$plot_svm_changing_folds <- renderPlot({
+        plot(svm_acc_folds,main = "SVM with changing fold num",type = "o",col = "red",xlab = "folds",ylab = "accuracy")
     })
     
+    output$plot_svm_changing_sims <- renderPlot({
+        plot(svm_acc_sims,main = "SVM with changing simulation number",type = "o",col = "blue",xlab = "simulation number",ylab = "accuracy")
+    })
     output$knn_acc_txt  = renderText({
         "KNN accuracy given inputs: "
     })

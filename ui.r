@@ -1,7 +1,7 @@
 library(shiny)
 shinyUI(
     pageWithSidebar(
-        headerPanel("Afffect of Changing model attributes on accurate predictions"),
+        headerPanel("Is SVM always better than KNN?"),
 
 
         sidebarPanel(
@@ -12,7 +12,7 @@ shinyUI(
             conditionalPanel(
                 condition = "input.modelType == 'knn'",
                 sliderInput("nearest_neighbours", "Select number of Nearest Neighbours:",
-                            min = 0, max = 10,
+                            min = 1, max = 12,
                             value = 5)
             ),
             checkboxGroupInput("accuracy_measures", "Hyperparameter Accuracy Measures", choices = list("Accuracy" = 1, "F1 Score" = 2, "False Positive Rate" = 3)),
@@ -24,15 +24,16 @@ shinyUI(
 
 
         mainPanel(
-            conditionalPanel(
-                condition = "input.inputId == 1",
-                plotOutput("plot_knn_changing_folds"),
-                plotOutput("plot_knn_changing_sims"),
-                plotOutput("plot_knn_changing_neighbours")
-            ),
+            
             conditionalPanel(
                 condition = "input.modelType == 'knn'",
                 plotOutput("get_knn"),
+                conditionalPanel(
+                    condition = "input.inputId == 1",
+                    plotOutput("plot_knn_changing_folds"),
+                    plotOutput("plot_knn_changing_sims"),
+                    plotOutput("plot_knn_changing_neighbours")
+                ),
                 conditionalPanel(
                     condition = "input.accuracy_measures.includes('1')",
                     textOutput("knn_acc_txt"),
@@ -53,6 +54,11 @@ shinyUI(
             
             conditionalPanel(
                 condition = "input.modelType == 'svm'",
+                conditionalPanel(
+                    condition = "input.inputId == 1",
+                    plotOutput("plot_svm_changing_folds"),
+                    plotOutput("plot_svm_changing_sims")
+                ),
                 plotOutput("get_svm"),
                 conditionalPanel(
                     condition = "input.accuracy_measures.includes('1')",

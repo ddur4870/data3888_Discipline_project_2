@@ -382,4 +382,21 @@ knn23 = mean(get_knn_accuracy(5,5, 15))
 knn24 = mean(get_knn_accuracy(5,5, 20))
 knn_acc_sims = c(knn21,knn22,knn23,knn24)
 
+svm21 = mean(get_svm_acc(5, 5))
+svm22 = mean(get_svm_acc(5, 10))
+svm23 = mean(get_svm_acc(5, 15))
+svm24 = mean(get_svm_acc(5, 20))
+svm_acc_sims = c(svm21,svm22,svm23,svm24)
+
+svm1 = mean(get_svm_acc(2,5))
+svm2 = mean(get_svm_acc(3,5))
+svm3 = mean(get_svm_acc(4,5))
+svm4 = mean(get_svm_acc(5,5))
+svm5 = mean(get_svm_acc(6,5))
+svm6 = mean(get_svm_acc(7,5))
+svm7 = mean(get_svm_acc(8,5))
+svm8 = mean(get_svm_acc(9,5))
+svm9 = mean(get_svm_acc(10,5))
+svm_acc_folds = c(svm1,svm2,svm3,svm4,svm5,svm6,svm7,svm8,svm9)
+
 
